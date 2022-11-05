@@ -1,0 +1,29 @@
+<html>
+
+<body>
+    <div id="content">No reponse from script yet.</div>
+
+    <form>
+        <input type="text" id="mobile_num" placeholder="Enter Mobile Number"/>
+        <button type="button" onclick="sendData()">Send</button>
+    </form>
+
+</body>
+<script>
+    function sendData() {
+        var http = new XMLHttpRequest();
+        http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        document.getElementById('content').innerHTML = this.responseText;
+        }
+    };
+        http.open('GET', '/form.py', true);
+        
+        let num = document.getElementById("mobile_num")
+        http.send(`mobile_num=13413431`);
+        console.log("Data Sent Succesfully")
+
+
+    }
+</script>
+</html>

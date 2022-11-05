@@ -1,16 +1,20 @@
-for __ in range(int(input())):
-    N, K = map(int,input().split())
-    L = list(map(int,input().split()))
-    myDic = {i:0 for i in range(1,K+1)}
-    colour = ans = j = 0
-    for i in range(N):
-        myDic[L[i]] += 1
-        if myDic[L[i]] == 1:
-            colour += 1
-        while colour == K:
-            myDic[L[j]] -= 1
-            if myDic[L[j]] == 0:
-                colour -= 1
-            j += 1
-        ans = max(i-j+1, ans)
-    print(ans)
+# cook your dish here
+for _ in range(int(input())):
+    n=int(input())
+    if(n%2):
+        print("Yes")
+        for i in range(1,n//2+1):
+            print(i,end=" ")
+        for i in range(n,(n//2),-1):
+            print(i,end=" ")
+        print()
+    elif(n!=2):
+        print("Yes")
+        print(n//2,end=" ")
+        for i in range(1,n//2):
+            print(i,end=" ")
+        for i in range(n,n//2,-1):
+            print(i,end=" ")
+        print()
+    else:
+        print("No")
