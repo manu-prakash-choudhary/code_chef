@@ -1,2 +1,2 @@
-for i in range(4,-1,-1):
-    print(i)
+print('ab'[-2::-1])
+#  newline

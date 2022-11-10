@@ -1,3 +1,6 @@
+# find string with no continous occurence of a letter
+# if there is remove the two chars
+# repeat the proces untill none left
 class Solution:
     def removeDuplicates(self, s: str) -> str:
         if len(s) > 2:
