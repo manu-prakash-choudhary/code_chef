@@ -1,2 +1,4 @@
-print('ab'[-2::-1])
+a = []
+a.append([1,2])
+print(a)
 #  newline
