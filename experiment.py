@@ -1,4 +1,4 @@
-a = []
-a.append([1,2])
+a = ['_','-']
+a.sort()
 print(a)
 #  newline
