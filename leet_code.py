@@ -49,7 +49,7 @@
 #         prime_factors = set()
 #         if n % 2 == 0:
 #             prime_factors.add(2)
-#             while n % 2 == 0:        
+#             while n % 2 == 0:
 #                 n = n / 2
 #         for i in range(3, int(n**0.5) + 1,2):
 #             if n % i == 0:
@@ -65,28 +65,32 @@
 # print(Solution().isUgly(14))
 # end of line
 
-s = "(1+(4+5+2)-3)+(6+8)"
+s = "-(-1+(4+5+2)-3+(-4))+(6+8)"
+s = s.replace(" ","")
 a = s.split("(")
 print(s)
 print(a)
 res_final = 0
-for i in a:
-    if i:
-        b = i.split(")")
+for i in range(len(a)):
+    if a[i]:
+        b = a[i].split(")")
+        print('b->',b)
         # res = 0
         for j in range(len(b)):
             if b[j] and len(b[j])>1:
                 if len(b[j])% 2 == 1:
+                    if b[j][0] == '+' or b[j][0] == '-':
+                        continue
                     eve = True
                     num = []
                     operations = []
-                    
+
                     for k in b[j] :
                         if eve :
                             int(k)
                             num.append(int(k))
                             eve = False
-                        else: 
+                        else:
                             eve = True
                             if k =='+':
                                 operations.append('+')
@@ -96,16 +100,75 @@ for i in a:
                     for l in range(len(operations)):
                         if operations[l] == '+':
                             res += num[l+1]
-                            b[j] = res
+                            b[j] = str(res)
                             print(res)
                         else:
                             res -= num[l+1]
-                            b[j] = res
+                            b[j] = str(res)
                             print(res,'in negative')
                 else:
                     pass
+            if len(b[j]) > 2:
+                eve = True
+                num = []
+                operations = []
+                for k in b[j][3:]:
+                    if eve :
+                        int(k)
+                        num.append(int(k))
+                        eve = False
+                    else:
+                        eve = True
+                        if k =='+':
+                            operations.append('+')
+                        else:
+                            operations.append('-')
+                res = num[0]
+                for l in range(len(operations)):
+                    if operations[l] == '+':
+                        res += num[l+1]
+                        b[j] = str(res)
+                        print(res)
+                    else:
+                        res -= num[l+1]
+                        b[j] = str(res)
+                        print(res,'in negative')
+                    # if not len(operations):
+                    #     b[j] = b[j][:3] + b[3:]
+                # b[j] = str(int(b[j]) - 2*int(b[j][1]))
+                # b[j] = '-' + b[j]
+                if b[j][2] == '+':
+                    b[j] = str(-int(b[j][1]) + int(b[j][3]))
+                else:
+                    b[j] = str(-int(b[j][1]) - int(b[j][3]))
+                print("expected -1 ->",b[j])
 
             else:
                 pass
+        print('final b ->',b)
+        a[i] = ''.join(b)
+        # for k in range(len(b)):
+        #     b = ''.join(b)
 
+
+print('final a', a)
+nums = []
+operations = []
+for i in range(len(a)):
+    for j in range(len(a[i])):
+        if a[i][j] == '+' or a[i][j] == '-':
+            operations.append(a[i][j])
+        elif a[i][j] != '' and a[i][j] != ')':
+            nums.append(a[i][j])
+print('value of nums ->',nums)
+print('value of operations ->',operations)
+
+
+
+
+
+
+# exception possible list
+#  -(-3 + 2)
+# ['-', '-3+2']
 
