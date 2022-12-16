@@ -65,110 +65,129 @@
 # print(Solution().isUgly(14))
 # end of line
 
-s = "-(-1+(4+5+2)-3+(-4))+(6+8)"
-s = s.replace(" ","")
-a = s.split("(")
-print(s)
-print(a)
-res_final = 0
-for i in range(len(a)):
-    if a[i]:
-        b = a[i].split(")")
-        print('b->',b)
-        # res = 0
-        for j in range(len(b)):
-            if b[j] and len(b[j])>1:
-                if len(b[j])% 2 == 1:
-                    if b[j][0] == '+' or b[j][0] == '-':
-                        continue
-                    eve = True
-                    num = []
-                    operations = []
+# add subtract expression evaluation problem
+# s = "-(-1+(4+5+2)-3+(-4))+(6+8)"
+# s = s.replace(" ","")
+# a = s.split("(")
+# print(s)
+# print(a)
+# res_final = 0
+# for i in range(len(a)):
+#     if a[i]:
+#         b = a[i].split(")")
+#         print('b->',b)
+#         # res = 0
+#         for j in range(len(b)):
+#             if b[j] and len(b[j])>1:
+#                 if len(b[j])% 2 == 1:
+#                     if b[j][0] == '+' or b[j][0] == '-':
+#                         continue
+#                     eve = True
+#                     num = []
+#                     operations = []
 
-                    for k in b[j] :
-                        if eve :
-                            int(k)
-                            num.append(int(k))
-                            eve = False
-                        else:
-                            eve = True
-                            if k =='+':
-                                operations.append('+')
-                            else:
-                                operations.append('-')
-                    res = num[0]
-                    for l in range(len(operations)):
-                        if operations[l] == '+':
-                            res += num[l+1]
-                            b[j] = str(res)
-                            print(res)
-                        else:
-                            res -= num[l+1]
-                            b[j] = str(res)
-                            print(res,'in negative')
-                else:
-                    pass
-            if len(b[j]) > 2:
-                eve = True
-                num = []
-                operations = []
-                for k in b[j][3:]:
-                    if eve :
-                        int(k)
-                        num.append(int(k))
-                        eve = False
-                    else:
-                        eve = True
-                        if k =='+':
-                            operations.append('+')
-                        else:
-                            operations.append('-')
-                res = num[0]
-                for l in range(len(operations)):
-                    if operations[l] == '+':
-                        res += num[l+1]
-                        b[j] = str(res)
-                        print(res)
-                    else:
-                        res -= num[l+1]
-                        b[j] = str(res)
-                        print(res,'in negative')
-                    # if not len(operations):
-                    #     b[j] = b[j][:3] + b[3:]
-                # b[j] = str(int(b[j]) - 2*int(b[j][1]))
-                # b[j] = '-' + b[j]
-                if b[j][2] == '+':
-                    b[j] = str(-int(b[j][1]) + int(b[j][3]))
-                else:
-                    b[j] = str(-int(b[j][1]) - int(b[j][3]))
-                print("expected -1 ->",b[j])
+#                     for k in b[j] :
+#                         if eve :
+#                             int(k)
+#                             num.append(int(k))
+#                             eve = False
+#                         else:
+#                             eve = True
+#                             if k =='+':
+#                                 operations.append('+')
+#                             else:
+#                                 operations.append('-')
+#                     res = num[0]
+#                     for l in range(len(operations)):
+#                         if operations[l] == '+':
+#                             res += num[l+1]
+#                             b[j] = str(res)
+#                             print(res)
+#                         else:
+#                             res -= num[l+1]
+#                             b[j] = str(res)
+#                             print(res,'in negative')
+#                 else:
+#                     pass
+#             if len(b[j]) > 2:
+#                 eve = True
+#                 num = []
+#                 operations = []
+#                 for k in b[j][3:]:
+#                     if eve :
+#                         int(k)
+#                         num.append(int(k))
+#                         eve = False
+#                     else:
+#                         eve = True
+#                         if k =='+':
+#                             operations.append('+')
+#                         else:
+#                             operations.append('-')
+#                 res = num[0]
+#                 for l in range(len(operations)):
+#                     if operations[l] == '+':
+#                         res += num[l+1]
+#                         b[j] = str(res)
+#                         print(res)
+#                     else:
+#                         res -= num[l+1]
+#                         b[j] = str(res)
+#                         print(res,'in negative')
+#                     # if not len(operations):
+#                     #     b[j] = b[j][:3] + b[3:]
+#                 # b[j] = str(int(b[j]) - 2*int(b[j][1]))
+#                 # b[j] = '-' + b[j]
+#                 if b[j][2] == '+':
+#                     b[j] = str(-int(b[j][1]) + int(b[j][3]))
+#                 else:
+#                     b[j] = str(-int(b[j][1]) - int(b[j][3]))
+#                 print("expected -1 ->",b[j])
 
-            else:
-                pass
-        print('final b ->',b)
-        a[i] = ''.join(b)
-        # for k in range(len(b)):
-        #     b = ''.join(b)
-
-
-print('final a', a)
-nums = []
-operations = []
-for i in range(len(a)):
-    for j in range(len(a[i])):
-        if a[i][j] == '+' or a[i][j] == '-':
-            operations.append(a[i][j])
-        elif a[i][j] != '' and a[i][j] != ')':
-            nums.append(a[i][j])
-print('value of nums ->',nums)
-print('value of operations ->',operations)
+#             else:
+#                 pass
+#         print('final b ->',b)
+#         a[i] = ''.join(b)
+#         # for k in range(len(b)):
+#         #     b = ''.join(b)
 
 
-
-
-
+# print('final a', a)
+# nums = []
+# operations = []
+# for i in range(len(a)):
+#     for j in range(len(a[i])):
+#         if a[i][j] == '+' or a[i][j] == '-':
+#             operations.append(a[i][j])
+#         elif a[i][j] != '' and a[i][j] != ')':
+#             nums.append(a[i][j])
+# print('value of nums ->',nums)
+# print('value of operations ->',operations)
 
 # exception possible list
 #  -(-3 + 2)
 # ['-', '-3+2']
+# it ends here
 
+class Solution:
+    def uniqueOccurrences(self, arr: list) -> bool:
+        item_set = set()
+        count_set = set()
+
+        for i in arr:
+            if i not in item_set:
+                item_set.add(i)
+                count = 0
+                for j in arr:
+                    if j==i:
+                        count+=1
+                if count not in count_set:
+                    count_set.add(count)
+                else:
+                    return False
+        
+        return True
+            
+
+
+print(Solution().uniqueOccurrences(arr = [1,2,2,2,1,1,3]))
