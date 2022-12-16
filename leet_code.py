@@ -70,7 +70,7 @@
 # s = s.replace(" ","")
 # a = s.split("(")
 # print(s)
-# print(a)
+# print(a)asd
 # res_final = 0
 # for i in range(len(a)):
 #     if a[i]:
