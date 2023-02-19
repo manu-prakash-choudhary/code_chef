@@ -43,3 +43,29 @@
 # print(obj.peek())
 # print(obj.pop())
 # print(obj.empty())
+
+for _ in range(int(input())):
+    n, k, q = map(int,input().split())
+    s = input()
+    queries = []
+    for i in range(q):
+        l, r = map(int, input().split())
+        queries.append((l,r))
+    print(queries)
+    count = 0
+    for temp in queries:
+        L, R = temp[0], temp[1]
+        string = s[L:R+1]
+        for i in range(len(string)):
+            # Now we well calculate all possible substrings of length i
+            for j in range(len(string) - i):
+                sub_string = string[j:]
+                if len(sub_string) >= k:
+                    ones = sub_string.count('1')
+                    zeros = sub_string.count('0')
+                    if not(ones > k or zeros > k):
+                        count+=1
+                else:
+                    count += 1
+        print(count)
+        
