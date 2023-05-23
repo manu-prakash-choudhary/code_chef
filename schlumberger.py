@@ -37,3 +37,4 @@ for i in B:
 
 print(final_list)
 print("monster_count")
+print()
