@@ -8,7 +8,7 @@ A = [[34,37,81], [2,5,4], [4,8,6]]
 # q = int(input())
 # B = list(map(int, input().split()))
 B = [[3, 5], [5,8]]
-
+print()
 num_map = dict()
 monster_count = 0
 for i in A:
