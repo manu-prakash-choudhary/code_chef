@@ -22,7 +22,6 @@ class Solution:
             j =  initial
             diff = (len(s) - initial)
             while j - initial <= diff//2:
-
                 a = j+1
                 j_initial_diff = j - initial
                 limit = a + j_initial_diff + 1
