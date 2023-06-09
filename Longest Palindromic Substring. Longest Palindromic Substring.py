@@ -26,7 +26,8 @@ class Solution:
                 j+=1
             initial += 1
         return lpl
-
+solObj = Solution()
+print(solObj.longestPalindrome(s = "babad"))
 
 
 
