@@ -40,7 +40,7 @@ class Solution:
         return LPstring
 solObj = Solution()
 print(solObj.longestPalindrome(s = "aaabbbcdaadc"))
-print(solObj.longestPalindrome(s = "cbbd"))
+# print(solObj.longestPalindrome(s = "cbbd"))
 # print(solObj.longestPalindrome(s = "babad"))
 
 
