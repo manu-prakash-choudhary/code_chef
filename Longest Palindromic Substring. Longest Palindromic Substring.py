@@ -11,23 +11,36 @@
                   now compare if string[initial:j] == string[j+1:j+(j-initial)]
                   if yes then check if j-initial is greater than lpl if yes then update lpl and continue else continue
                   '''
-
+''' Below is the general Solution of the problem and it works'''
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         initial = 0
         lpl = 1
-        j = initial
-        while initial < len(s)//2+1:
-            diff = (len(s) - initial) //2 + 1
-            while j < diff:
-                if s[initial:j] == s[j+1:j+(j-initial)]:
-                    if (j-initial) * 2 > lpl:
-                        lpl = (j-initial) * 2
+        LPstring = s[0]
+        while initial < len(s):
+            
+            j =  initial
+            diff = (len(s) - initial)
+            while j - initial <= diff//2:
+
+                a = j+1
+                j_initial_diff = j - initial
+                limit = a + j_initial_diff + 1
+                if s[initial:a] == s[a:limit][::-1]:
+                    if (j_initial_diff + 1) * 2 > lpl:
+                        lpl = (j_initial_diff + 1) * 2
+                        LPstring = s[initial:limit]
+                elif s[initial:a] == s[a-1:limit-1][::-1]:
+                    if (j_initial_diff ) * 2 + 1> lpl:
+                        lpl = (j_initial_diff ) * 2 + 1
+                        LPstring = s[initial:limit-1]
+
                 j+=1
             initial += 1
-        return lpl
+        return LPstring
 solObj = Solution()
-print(solObj.longestPalindrome(s = "babad"))
+print(solObj.longestPalindrome(s = "aaabbbcdaadc"))
+# print(solObj.longestPalindrome(s = "babad"))
 
 
 
