@@ -9,16 +9,16 @@ from typing import List
 
 class Solution:
     def nextGreatestLetter(self, letters: List[str], target: str) -> str:
-        min_greatest = float('inf')
-        found = False
-        for i in letters:
-            if ord(i) < min_greatest and ord(i)>ord(target):
-                found = i
-                min_greatest = ord(i)
-        if found:
-            return found
-        else: 
-            return letters[0]
+        left = 0
+        right = len(letters) - 1
+        while right >= left:
+            mid = (left + right) // 2
+            if letters[mid] <= target:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return letters[left] if left < len(letters) else letters[0]
+        
 
 solObj = Solution()
 print(solObj.nextGreatestLetter(["c","f","j"], target = "c"))
