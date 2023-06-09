@@ -15,8 +15,20 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         initial = 0
-        lpl = 0
-        
+        lpl = 1
+        j = initial
+        while initial < len(s)//2+1:
+            diff = (len(s) - initial) //2 + 1
+            while j < diff:
+                if s[initial:j] == s[j+1:j+(j-initial)]:
+                    if (j-initial) * 2 > lpl:
+                        lpl = (j-initial) * 2
+                j+=1
+            initial += 1
+        return lpl
+
+
+
 
 
 
