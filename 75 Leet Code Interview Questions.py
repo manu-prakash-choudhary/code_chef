@@ -10,7 +10,7 @@ class Solution1:
         return "".join(sum(zip_longest(word1, word2, fillvalue=""), ()))
     
 solObj = Solution1()
-print(solObj.mergeAlternately(word1 = "ab", word2 = "pqrs"))
+print(sys._getframe(0).f_lineno, 'Que 1', solObj.mergeAlternately(word1 = "ab", word2 = "pqrs"))
 
 
 # Que 2 :  Reverse Vowels of a String
@@ -33,4 +33,4 @@ class Solution2:
             left, right = left+1, right-1
         return ''.join(s)
 solObj = Solution2()
-print('Que 2',solObj.reverseVowels(s = "leetcode"))
+print(sys._getframe(0).f_lineno, 'Que 2', solObj.reverseVowels(s = "leetcode"))
