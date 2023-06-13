@@ -3,8 +3,10 @@ import sys
 import numpy as np
 from typing import List
 
-'''Easy Section (5-10 Minutes)'''
-# Que 1 Maximum Subarray kadane's algorithm
+'''Easy Section (5-10 Minutes)
+Medium Section (15-20 Minutes)
+'''
+# Que 3 Maximum Subarray kadane's algorithm
 que1 = False
 if que1:
     def sum_subarray_recursive(nums, start, maxSum, end):
@@ -63,4 +65,20 @@ if que1:
     -5,-30,-91,73,-85,10,80,93,76,48,-44,72,-58,-83,20,49,-64,94,18,11,48,16,2,-26,47,99,-21,-50,55,-23,-94,-73,46,-85]
     ))
 
-    
+# que 4 Contains Duplicate
+que2 = True
+if que2:
+    class Solution2:
+        def containsDuplicate(self, nums: List[int]) -> bool:
+            setNums = set(nums)
+            print(setNums)
+            if len(setNums) == len(nums):
+                return False
+            else:
+                return True
+    # Input: nums = [1,2,3,4]
+    solObj = Solution2()
+    print(sys._getframe(0).f_lineno, 'Que 2', solObj.containsDuplicate(nums=[1,2,3,4]))
+
+
+
