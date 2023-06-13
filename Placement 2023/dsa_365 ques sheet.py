@@ -266,4 +266,3 @@ if topic == 'Segment Trees':
 topic = 'Miscellaneous'
 if topic == 'Miscellaneous':
     pass
-
