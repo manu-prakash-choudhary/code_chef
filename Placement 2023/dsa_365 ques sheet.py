@@ -179,7 +179,7 @@ if topic == 'Stacks & Queues':
 
 ''' ************************************* Topic 8 : Greedy ************************************* '''
 '''
-    Total Questions = 18
+    Total Questions = 22
     Marked_Done = 0
 '''
 topic = 'Greedy'
@@ -188,7 +188,7 @@ if topic == 'Greedy':
 
 ''' ************************************* Topic 9 : Binary Trees ************************************* '''
 '''
-    Total Questions = 25
+    Total Questions = 33
     Marked_Done = 0
 '''
 topic = 'Binary Trees'
@@ -197,7 +197,7 @@ if topic == 'Binary Trees':
 
 ''' ************************************* Topic 10 : Binary Search Trees ************************************* '''
 '''
-    Total Questions = 20
+    Total Questions = 21
     Marked_Done = 0
 '''
 topic = 'Binary Search Trees'
@@ -206,7 +206,7 @@ if topic == 'Binary Search Trees':
 
 ''' ************************************* Topic 11 : Heaps & Hashing ************************************* '''
 '''
-    Total Questions = 20
+    Total Questions = 28
     Marked_Done = 0
 '''
 topic = 'Heaps & Hashing'
@@ -215,7 +215,7 @@ if topic == 'Heaps & Hashing':
 
 ''' ************************************* Topic 12 : Graphs ************************************* '''
 '''
-    Total Questions = 20
+    Total Questions = 40
     Marked_Done = 0
 '''
 topic = 'Graphs'
@@ -224,7 +224,7 @@ if topic == 'Graphs':
 
 ''' ************************************* Topic 13 : Tries ************************************* '''
 '''
-    Total Questions = 20
+    Total Questions = 6
     Marked_Done = 0
 '''
 topic = 'Tries'
@@ -233,7 +233,7 @@ if topic == 'Tries':
 
 ''' ************************************* Topic 14 : Dynamic Programming ************************************* '''
 '''
-    Total Questions = 20
+    Total Questions = 54
     Marked_Done = 0
 '''
 topic = 'Dynamic Programming'
@@ -242,7 +242,7 @@ if topic == 'Dynamic Programming':
 
 ''' ************************************* Topic 15 : Bit Manipulation ************************************* '''
 '''
-    Total Questions = 20
+    Total Questions = 10
     Marked_Done = 0
 '''
 topic = 'Bit Manipulation'
@@ -251,7 +251,7 @@ if topic == 'Bit Manipulation':
 
 ''' ************************************* Topic 16 : Segment Trees ************************************* '''
 '''
-    Total Questions = 20
+    Total Questions = 6
     Marked_Done = 0
 '''
 topic = 'Segment Trees'
@@ -260,7 +260,7 @@ if topic == 'Segment Trees':
 
 ''' ************************************* Topic 17 : Miscellaneous ************************************* '''
 '''
-    Total Questions = 20
+    Total Questions = 'NA'
     Marked_Done = 0
 '''
 topic = 'Miscellaneous'
