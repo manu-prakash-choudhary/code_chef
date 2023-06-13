@@ -1,12 +1,11 @@
 # DSA sheet by Shradha & Aman 
 import sys
 import numpy as np
-from typing import List
+from typing import List, Tuple, Dict, Set, Union
 
-'''Easy Section (5-10 Minutes)
-Medium Section (15-20 Minutes)
-Hard Section (40-60 Minutes)
-'''
+
+
+''' ************************************* Topic 1 : Arrays************************************* '''
 # Que 3 Maximum Subarray kadane's algorithm
 que1 = False
 if que1:
@@ -83,7 +82,7 @@ if que2:
     print(sys._getframe(0).f_lineno, 'Que 2', solObj.containsDuplicate(nums=[1,2,3,4]))
 
 # Que 5 Chocolate Distribution Problem
-que3 = True
+que3 = False
 if que3:
     # Given an array of N integers where each value represents the number of chocolates in a packet. Each packet can have a variable number of chocolates. There are m students, the task is to distribute chocolate packets such that: 
         # Each student gets one packet.
@@ -97,7 +96,54 @@ if que3:
     # If we pick 2, 3 and 4, we get the minimum difference between maximum and minimum packet sizes.
 
     # Input : arr[] = {3, 4, 1, 9, 56, 7, 9, 12} , m = 5 
+    # [1, 3, 4, 7, 9, 9, 12, 56]
     # Output: Minimum Difference is 6 
 
+    class Solution3:
+        def findMinDiff(self, nums: List[int], m: str) -> int:
+            nums.sort()
+            print(nums)
+            minDiff = float('inf')
+            for i in range(len(nums)-m+1):
+                minDiff = min(minDiff, nums[i+m-1]-nums[i])
+            return minDiff
 
+    solObj = Solution3()
+    print(sys._getframe(0).f_lineno, 'Que 3', solObj.findMinDiff(nums=[7, 3, 2, 4, 9, 12, 56], m=3))
+    print(sys._getframe(0).f_lineno, 'Que 3', solObj.findMinDiff(nums=[3, 4, 1, 9, 56, 7, 9, 12], m=5))
+
+
+
+''' ************************************* Topic 2 : Strings ************************************* '''
+
+
+''' ************************************* Topic 3 : 2D Arrays ************************************* '''
+
+''' ************************************* Topic 4 : Searching & Sorting ************************************* '''
+
+''' ************************************* Topic 5 : Backtracking ************************************* '''
+
+''' ************************************* Topic 6 : Linked List ************************************* '''
+
+''' ************************************* Topic 7 : Stacks & Queues ************************************* '''
+
+''' ************************************* Topic 8 : Greedy ************************************* '''
+
+''' ************************************* Topic 9 : Binary Trees ************************************* '''
+
+''' ************************************* Topic 10 : Binary Search Trees ************************************* '''
+
+''' ************************************* Topic 11 : Heaps & Hashing ************************************* '''
+
+''' ************************************* Topic 12 : Graphs ************************************* '''
+
+''' ************************************* Topic 13 : Tries ************************************* '''
+
+''' ************************************* Topic 14 : Dynamic Programming ************************************* '''
+
+''' ************************************* Topic 15 : Bit Manipulation ************************************* '''
+
+''' ************************************* Topic 16 : Segment Trees ************************************* '''
+
+''' ************************************* Topic 17 : Miscellaneous ************************************* '''
 
