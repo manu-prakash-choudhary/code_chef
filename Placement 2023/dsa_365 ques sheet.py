@@ -5,6 +5,7 @@ from typing import List
 
 '''Easy Section (5-10 Minutes)
 Medium Section (15-20 Minutes)
+Hard Section (40-60 Minutes)
 '''
 # Que 3 Maximum Subarray kadane's algorithm
 que1 = False
