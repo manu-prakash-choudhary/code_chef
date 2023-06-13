@@ -128,7 +128,28 @@ if topic == 'Arrays':
 '''
 topic = 'Strings'
 if topic == 'Strings':
-    pass
+    
+    # Que 1 Valid Palindrome
+    que1 = True
+    if que1:
+        class Solution1:
+            def isPalindrome(self, s: str) -> bool:
+                s = s.lower()
+                s_new = ""
+                for i in s:
+                    if i.isalnum():
+                        s_new += i
+                if s_new == s_new[::-1]:
+                    return True
+                else:
+                    return False
+                
+            
+
+        
+        
+
+
 
 
 
