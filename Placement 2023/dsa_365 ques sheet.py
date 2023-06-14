@@ -120,6 +120,88 @@ if topic == 'Arrays':
         print(sys._getframe(0).f_lineno, 'Que 3', solObj.findMinDiff(nums=[7, 3, 2, 4, 9, 12, 56], m=3))
         print(sys._getframe(0).f_lineno, 'Que 3', solObj.findMinDiff(nums=[3, 4, 1, 9, 56, 7, 9, 12], m=5))
 
+    # Que 6 Search in Rotated Sorted Array
+    que4 = False
+    if que4:
+        def binary_search(left, right, lista, element):
+            if right < left:
+                return -1
+            mid_index = (left + right) // 2
+            if lista[mid_index] == element:
+                return mid_index
+            if lista[mid_index]  > element:
+                return binary_search(left, mid_index-1, lista, element)
+            if lista[mid_index] < element:
+                return binary_search(mid_index+1, right, lista, element)
+            
+
+        def find_minimum_Modified_binary_search(arr, left, right):
+                if arr[left] < arr[right]:
+                    return left
+                mid = left + (right - left) // 2
+                
+
+                if arr[mid] > arr[right]:
+                    left = mid + 1
+                    return find_minimum_Modified_binary_search(arr, left, right)
+                else:
+                    right = mid
+                    return find_minimum_Modified_binary_search(arr, left, right)
+        
+        class Solution4:
+            def search(self, nums: List[int], target: int) -> int:
+                min_index = find_minimum_Modified_binary_search(nums, 0,  len(nums) - 1)
+                nums = nums[min_index:] + nums[:min_index]
+                result =  binary_search(0,len(nums) - 1, nums, target)
+                if result != -1:
+                    if result > pivot_right_length:
+                        return result - (len(nums) - min_index)
+                    else:
+                        return result + min_index
+
+                return result
+                
+
+
+
+        print(Solution4().search(nums = [4,5,6,7,0,1,2], target = 3))
+            
+    # Que 7 Next Permutation
+    que5 = True
+    if que5:
+        def find_min_greater(arr, ele, indx):
+            if indx == 0:
+                return arr
+            min_greater_index = indx
+            for i in range(indx, len(arr)):
+                if arr[i] > ele and arr[i] < arr[min_greater_index]:
+                    min_greater_index = i
+            arr[indx-1], arr[min_greater_index] = arr[min_greater_index], arr[indx-1]
+            arr[indx:] = sorted(arr[indx:])
+            return arr
+        
+        class Solution5:
+            def nextPermutation(self, nums: List[int]) -> None:
+                #  traverse the list 
+                # check if updation possible updation possible rule if nums[x] == max(nums[x+1:]) then it cannot be updated
+                # if updation possible then Go to Next Element
+                # if updation not possible then Take Previous elem and them update that with minimum greater than x and then sort(nums[x+1:])
+                
+                for i in range(len(nums)):
+                    if nums[i] == max(nums[i:]):
+                        nums = find_min_greater(nums, nums[i-1], i)
+                        break
+                return nums
+                        
+
+        print(Solution5().nextPermutation(nums=[3,1,2]))
+        # print(Solution5().nextPermutation(nums=[3, 4, 5, 2, 1]))
+        # print(Solution5().nextPermutation(nums=[2, 3, 5, 4, 1]))
+
+
+
+        
+
 
 
 ''' ************************************* Topic 2 : Strings ************************************* '''
@@ -147,14 +229,10 @@ if topic == 'Strings':
                 
     que2 = False
     if que2:
-        
         class Solution1:
             def isAnagram(self, s: str, t: str) -> bool:
                 return Counter(s) == Counter(t)
-                
-                
-                
-        
+
         solObj = Solution1()
         print(solObj.isAnagram('a', 'ab'))
 
