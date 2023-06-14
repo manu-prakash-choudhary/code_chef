@@ -2,6 +2,7 @@
 import sys
 import numpy as np
 from typing import List, Tuple, Dict, Set, Union
+from collections import Counter
 
 
 
@@ -130,7 +131,7 @@ topic = 'Strings'
 if topic == 'Strings':
     
     # Que 1 Valid Palindrome
-    que1 = True
+    que1 = False
     if que1:
         class Solution1:
             def isPalindrome(self, s: str) -> bool:
@@ -144,7 +145,21 @@ if topic == 'Strings':
                 else:
                     return False
                 
-            
+    que2 = False
+    if que2:
+        
+        class Solution1:
+            def isAnagram(self, s: str, t: str) -> bool:
+                return Counter(s) == Counter(t)
+                
+                
+                
+        
+        solObj = Solution1()
+        print(solObj.isAnagram('a', 'ab'))
+
+
+
 
         
         
