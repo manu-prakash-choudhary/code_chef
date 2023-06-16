@@ -1,0 +1,5 @@
+### Formula’s used
+
+- sum of first n numbers = n*(n+1) / 2
+- sum of first n square number = (n * (n + 1) * (2n + 1)) / 6
+- sum of first n cubes numbers = (n * (n + 1) / 2)²

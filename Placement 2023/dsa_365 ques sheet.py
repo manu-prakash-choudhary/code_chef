@@ -167,36 +167,114 @@ if topic == 'Arrays':
         print(Solution4().search(nums = [4,5,6,7,0,1,2], target = 3))
             
     # Que 7 Next Permutation
-    que5 = True
+    que5 = False
     if que5:
-        def find_min_greater(arr, ele, indx):
-            if indx == 0:
-                return arr
-            min_greater_index = indx
+        def find_min_greater(arr, indx):
+            ele = arr[indx]
+            min_greater = max(arr[indx:])
+            min_greater_index = arr.index(min_greater, indx)
             for i in range(indx, len(arr)):
                 if arr[i] > ele and arr[i] < arr[min_greater_index]:
                     min_greater_index = i
-            arr[indx-1], arr[min_greater_index] = arr[min_greater_index], arr[indx-1]
-            arr[indx:] = sorted(arr[indx:])
+            arr[indx], arr[min_greater_index] = arr[min_greater_index], arr[indx]
+            arr[indx+1:] = sorted(arr[indx+1:])
+            
             return arr
-        
+
         class Solution5:
             def nextPermutation(self, nums: List[int]) -> None:
-                #  traverse the list 
-                # check if updation possible updation possible rule if nums[x] == max(nums[x+1:]) then it cannot be updated
-                # if updation possible then Go to Next Element
-                # if updation not possible then Take Previous elem and them update that with minimum greater than x and then sort(nums[x+1:])
+                """
+                Do not return anything, modify nums in-place instead.
+                """
+                found_yet = False
+                find_pos_to_change = None
                 
                 for i in range(len(nums)):
                     if nums[i] == max(nums[i:]):
-                        nums = find_min_greater(nums, nums[i-1], i)
-                        break
-                return nums
-                        
+                        if i == 0:
+                            continue
+                        index = i - 1
+                        if nums[index] < nums[i]:
+                            find_pos_to_change = i - 1
+                if find_pos_to_change is not None:
+                    nums = find_min_greater(nums, find_pos_to_change)
+                    found_yet = True
+                
+                if not found_yet:
+                    nums[:] = sorted(nums)
+                print(nums)
+        
+        nums = [2,2,3,4,2,3,1,1,2]
 
-        print(Solution5().nextPermutation(nums=[3,1,2]))
-        # print(Solution5().nextPermutation(nums=[3, 4, 5, 2, 1]))
-        # print(Solution5().nextPermutation(nums=[2, 3, 5, 4, 1]))
+        Solution5().nextPermutation(nums=[3,1,2])
+        Solution5().nextPermutation(nums=[1,2,3])
+        Solution5().nextPermutation(nums=[3,2,1])
+        Solution5().nextPermutation(nums=[1,1,5])
+        Solution5().nextPermutation(nums=[3, 4, 5, 2, 1])
+        Solution5().nextPermutation(nums=[2, 3, 5, 4, 1])
+
+    # Que 8 Best Time to Buy and Sell Stock
+    que6 = False
+    if que6:
+        class Solution6:
+            def maxProfit(self, prices: List[int]) -> int:
+                max_profit = 0
+                curr_element = prices[0]
+
+                for i in range(1, len(prices)):
+                    if prices[i] < curr_element:
+                        curr_element = prices[i]
+                        continue
+                    diff = prices[i] - curr_element
+                    if diff > max_profit:
+                        max_profit = diff
+                        
+                return max_profit
+                    
+                    
+
+                
+        print(Solution6().maxProfit(prices= [7, 6, 11, 4, 5, 6, 4, 11, 3 ,13])) # 10
+        print(Solution6().maxProfit(prices= [7, 1, 5, 3, 6, 4]))  # 5
+        print(Solution6().maxProfit(prices= [7, 6, 4, 3, 1])) # 0
+        print(Solution6().maxProfit(prices= [11, 5, 7, 6, 1])) # 2
+        print(Solution6().maxProfit(prices= [1, 1, 1, 1, 1, 1])) # 0
+        print(Solution6().maxProfit(prices= [1, 2, 1, 1, 4, 2, 1, 3, 4])) # 3
+
+    # que 9 Repeat and Missing Number Array
+    que7 = False
+    if que7:
+        class Solution7:
+            # @param A : tuple of integers
+            # @return a list of integers
+            def repeatedNumber(self, A : List[int]):
+                sum_actual = sum(A)
+                sum_squares = sum([i**2 for i in A])
+                n = len(A)
+                sum_n = (n*(n+1))//2
+                sum_squares_n = (n*(n+1)*(2*n+1))//6
+                B_minus_A = sum_actual - sum_n  # B-A
+                B_plus_A = (sum_squares - sum_squares_n)//B_minus_A # B+A = (B^2 - A^2) / (B-A)
+                B_return = (B_plus_A + B_minus_A)//2
+                A_return = B_plus_A - B_return
+                return [A_return, B_return]
+                
+                
+        print(Solution7().repeatedNumber(A=A))
+
+    # que 10 Kth Largest Element in an Array
+    que8 = True
+    if que8:
+        class Solution8:
+            def findKthLargest(self, nums: List[int], k: int) -> int:
+                
+                    
+
+                
+
+
+
+
 
 
 
