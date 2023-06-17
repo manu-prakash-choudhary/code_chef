@@ -292,7 +292,7 @@ if topic == 'Arrays':
         print(solObj.findKthLargest(nums = [3,2,1,5,6,4], k=2))
 
     # que 11 Trapping Rain Water
-    que9 = True
+    que9 = False
     if que9:
         class Solution9():
             def trap(self, height: List[int]) -> int:
