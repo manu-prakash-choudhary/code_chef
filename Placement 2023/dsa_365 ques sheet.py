@@ -377,14 +377,21 @@ if topic == 'Strings':
                 else:
                     return False
                 
+    # Que 2 Valid Anagram
     que2 = False
     if que2:
-        class Solution1:
+        class Solution2:
             def isAnagram(self, s: str, t: str) -> bool:
                 return Counter(s) == Counter(t)
 
         solObj = Solution1()
         print(solObj.isAnagram('a', 'ab'))
+
+    
+    que3 = False
+    if que3:
+        
+            
 
 
 
