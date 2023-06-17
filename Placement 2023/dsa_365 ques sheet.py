@@ -3,6 +3,11 @@ import sys
 import numpy as np
 from typing import List, Tuple, Dict, Set, Union
 from collections import Counter
+from heap import MinHeap
+
+
+
+
 
 
 
@@ -259,14 +264,81 @@ if topic == 'Arrays':
                 A_return = B_plus_A - B_return
                 return [A_return, B_return]
                 
-                
+        A = [1,2,3,4,7,8,6]                
         print(Solution7().repeatedNumber(A=A))
 
     # que 10 Kth Largest Element in an Array
-    que8 = True
+    que8 = False
     if que8:
+        # from heap import MinHeap
         class Solution8:
             def findKthLargest(self, nums: List[int], k: int) -> int:
+                # nums.sort()
+                # return nums[-k]
+
+                # here we will create a heap sort, actually we will not create it we will import it from a new file which we will create named as heap.py
+                size = len(nums)
+                heapObj = MinHeap(size)
+                for i in nums:
+                    heapObj.insert(i)
+
+                # print(heapObj.storage)
+                for i in range(size - k):
+                    heapObj.remove_min()
+                return heapObj.remove_min()
+                # remove size - k elements
+
+        solObj = Solution8()
+        print(solObj.findKthLargest(nums = [3,2,1,5,6,4], k=2))
+
+    # que 11 Trapping Rain Water
+    que9 = True
+    if que9:
+        class Solution9():
+            def trap(self, height: List[int]) -> int:
+                i = 0
+                area = 0
+                n = len(height)
+                while i < n:
+                    jGI = None
+                    curr_ele = height[i]
+                    for j in range(i+1, n):
+                        if height[j] >= curr_ele:
+                            jGI = j
+                            break
+
+                    if jGI is not None:
+                        l = j - i
+                        if j-i > 1:
+                            first_ele, second_ele = height[i], height[j]
+                            area += (j - i - 1) * min(height[j], height[i])
+                            area -= sum(height[i+1: j])
+                            i = j
+                            continue
+                    else:
+                        if i+1 == n:
+                            break
+                        max_ele = max(height[i+1:])
+                        j = height.index(max_ele, i+1)
+                        area += (j - i - 1) * height[j]
+                        area -= sum(height[i+1: j])
+                        i = j
+                        continue
+                    i+=1
+                return area
+        
+        solObj = Solution9()
+        # print with line number
+        print(sys._getframe(0).f_lineno, solObj.trap(height = [0,1,0,2,1,0,1,3,2,1,2,1])) # 6
+        print(sys._getframe(0).f_lineno, solObj.trap(height = [4,2,0,3,2,5])) # 9
+        print(sys._getframe(0).f_lineno, solObj.trap(height = [2, 2, 4, 2, 1, 1, 2, 1])) # 2
+        print(sys._getframe(0).f_lineno, solObj.trap(height = [5, 2, 3, 1, 2, 5, 1, 1, 1, 7])) # 24
+        print(sys._getframe(0).f_lineno, solObj.trap(height = [5, 1, 2,1, 1, 2, 1, 1, 2, ])) # 5
+        print(sys._getframe(0).f_lineno, solObj.trap(height = [6,8,5,0,0,6,5])) # 13
+
+
+
+              
                 
                     
 
