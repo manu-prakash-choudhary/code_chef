@@ -14,7 +14,7 @@ from heap import MinHeap
 ''' ************************************* Topic 1 : Arrays************************************* '''
 ''' 
     Total Questions = 26
-    Marked_Done = 5
+    Marked_Done = 19
 
 '''
 topic = 'Arrays'
@@ -336,18 +336,108 @@ if topic == 'Arrays':
         print(sys._getframe(0).f_lineno, solObj.trap(height = [5, 1, 2,1, 1, 2, 1, 1, 2, ])) # 5
         print(sys._getframe(0).f_lineno, solObj.trap(height = [6,8,5,0,0,6,5])) # 13
 
-
-
-              
+    # que 12 Maximum Product Subarray 
+    que10 = False
+    if que10:
+        def prod(arr):
+            pass
+        class Solution10:
+            def maxProduct(self, nums: List[int]) -> int:
+                curMax, curMin = 1, 1
+                res = nums[0]
                 
+                for n in nums:
+                    vals = (n, n * curMax, n * curMin)
+                    curMax, curMin = max(vals), min(vals)
                     
+                    res = max(res, curMax)
+                    
+                return res
+                
+        # [2,3,-2,4]
+        solObj = Solution10()
+        print(sys._getframe(0).f_lineno, solObj.maxProduct(nums = [2,3,-2,4])) # 6
+        print(sys._getframe(0).f_lineno, solObj.maxProduct(nums = [0,-2, 3, -4])) # 24
+        print(sys._getframe(0).f_lineno, solObj.maxProduct(nums = [-2,0,-1])) # 0
 
+    # que 13 Find Minimum in Rotated Sorted Array
+    que11 = False
+    if que11:
+        def find_minimum_Modified_binary_search(arr, left, right):
+                if left == right:
+                    return left
+                if arr[left] < arr[right]:
+                    return left
+                mid = left + (right - left) // 2
                 
 
+                if arr[mid] > arr[right]:
+                    left = mid + 1
+                    return find_minimum_Modified_binary_search(arr, left, right)
+                else:
+                    right = mid
+                    return find_minimum_Modified_binary_search(arr, left, right)
+        
+        class Solution11:
+            def findMin(self, nums: List[int]) -> int:
+                return nums[find_minimum_Modified_binary_search(nums, 0, len(nums) - 1)]
 
+        solObj = Solution11()
+        print(sys._getframe(0).f_lineno, solObj.findMin(nums = [3,4,5,1,2]))
 
+    # Que 14 Find if there is a pair with a given sum in the rotated sorted Array
+    que12 = False
+    if que12:
+        class Solution11():
+            def pairInSortedRotated(self, arr, n, x):
+                for i in range(0, n - 1):
+                    if (arr[i] > arr[i + 1]):
+                        break
+                l = (i + 1) % n
+                r = i
+                while (l != r):
+                    if (arr[l] + arr[r] == x):
+                        return True
+                    if (arr[l] + arr[r] < x):
+                        l = (l + 1) % n
+                    else:
+                        r = (n + r - 1) % n
+            
+                return False
+                
 
+        solObj = Solution11()
+        print(sys._getframe(0).f_lineno, solObj.pairInSortedRotated(arr = [11, 15, 6, 8, 9, 10], n = 6, x = 16)) # True
 
+    # Que 15 Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+    que13 = False
+    if que13:
+        class Solution13():
+            def threeSum(self, nums : List[int]) -> List[List[int]]:
+                pass
+    # Que 16 Container With Most Water
+    que14 = False
+    if que14:
+        class Solution14():
+            def maxArea(self, height: List[int]) -> int:
+                max_prod = 0
+                l = 0
+                r = len(height) - 1
+                while l < r:
+                    prod = min(height[l], height[r]) * (r - l)
+                    max_prod = max(max_prod, prod)
+                    if height[l] > height[r]:
+                        r = r - 1
+                    else:
+                        l = l + 1
+                return max_prod
+        solObj = Solution14()
+        print(sys._getframe(0).f_lineno, solObj.maxArea(height = [1,8,6,2,5,4,8,3,7])) # 49
+
+    
+
+    
+    
 
 
         
@@ -388,13 +478,124 @@ if topic == 'Strings':
         print(solObj.isAnagram('a', 'ab'))
 
     
+    # que 4 Remove Consecutive Characters
     que3 = False
     if que3:
+        class Solution3():
+            def removeConsecutiveCharacter(self, S):
+                S_new = S[0]
+                for i in range(1, len(S)):
+                    if S[i] == S[i-1]:
+                        continue
+                    else:
+                        S_new += S[i]
+                return S_new
         
+        solObj = Solution3()
+        print(sys._getframe(0).f_lineno, solObj.removeConsecutiveCharacter(S = "aabbccdd"))
+        
+    # que 5 Longest Common Prefix
+    que4 = False
+    if que4:
+        class Solution4():
+            def longestCommonPrefix(self, strs: List[str]) -> str:
+                strs.sort()
+                prefix = ""
+                for i in range(len(strs[0])):
+                    if strs[0][i] == strs[-1][i]:
+                        prefix += strs[0][i]
+                    else:
+                        break
+                return prefix
             
 
+        solObj = Solution4()
+        print(sys._getframe(0).f_lineno, solObj.longestCommonPrefix(strs = ["flower","flow","flight"])) # fl
+        print(sys._getframe(0).f_lineno, solObj.longestCommonPrefix(strs = ["dog","racecar","car"])) # "" 
+        print(sys._getframe(0).f_lineno, solObj.longestCommonPrefix(strs = ["ab", "a"])) # a
 
+    # que 6 Convert a sentence into its equivalent mobile numeric keypad sequence
+    que5 = False
+    if que5:
+        class Solution5():
+            def printSequence(self, S):
+                keypad = {
+                    'A': '2', 'B': '22', 'C': '222', 'D': '3', 'E': '33', 'F': '333', 'G': '4', 'H': '44', 'I': '444', 'J': '5', 'K': '55', 'L': '555', 'M': '6', 'N': '66', 'O': '666', 'P': '7', 'Q': '77', 'R': '777', 'S': '7777', 'T': '8', 'U': '88', 'V': '888', 'W': '9', 'X': '99', 'Y': '999', 'Z': '9999'
+                }
+                S_new = ""
+                for i in S:
+                    if i == ' ':
+                        S_new += '0'
+                    else:
+                        S_new += keypad[i]
+                return S_new
 
+        solObj = Solution5()
+        print(sys._getframe(0).f_lineno, solObj.printSequence(S = "GEEKSFORGEEKS"))  
+
+    # que 7 Print all the duplicates in the input string
+    que6 = False
+    if que6:
+        class Solution6():
+            def printDups(self, string):
+                string = string.lower()
+                d = {}
+                for i in string:
+                    if i in d:
+                        d[i] += 1
+                    else:
+                        d[i] = 1
+                for i in d:
+                    if d[i] > 1:
+                        print(i, "occurs", d[i], "times", end = ", ")
+                print()
+        
+        solObj = Solution6()
+        sys._getframe(0).f_lineno, solObj.printDups(string = "geeksforgeeks") # e g k s
+        sys._getframe(0).f_lineno, solObj.printDups(string = "hello world") # l o
+            
+
+    # que 8 Longest Substring Without Repeating Characters
+    que7 = False
+    if que7:
+        class Solution7:
+            def lengthOfLongestSubstring(self, s: str) -> int:
+                sub_str = ""
+                mLSS = 0
+                i = 0
+                while i < len(s):
+                    if s[i] in sub_str:
+                        if len(sub_str) > mLSS:
+                            mLSS = len(sub_str)
+                        sub_str = sub_str[sub_str.index(s[i])+1:] + s[i]
+                        
+                    else:
+                        sub_str += s[i]
+                    i+=1
+
+                return max(mLSS, len(sub_str))
+    
+        solObj = Solution7()
+        print(sys._getframe(0).f_lineno, solObj.lengthOfLongestSubstring(s = "abcabcbb")) # 3
+        print(sys._getframe(0).f_lineno, solObj.lengthOfLongestSubstring(s = "bbbbb")) # 1
+        print(sys._getframe(0).f_lineno, solObj.lengthOfLongestSubstring(s = "pwwkew")) # 3
+        print(sys._getframe(0).f_lineno, solObj.lengthOfLongestSubstring(s = "dvdg")) # 3
+    
+    # que 9 Group Anagrams
+    que8 = False
+    if que8:
+        class Solution8:
+            def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+                d = {}
+                for i in strs:
+                    if "".join(sorted(i)) in d:
+                        d["".join(sorted(i))].append(i)
+                    else:
+                        d["".join(sorted(i))] = [i]
+                return list(d.values())
+    
+        solObj = Solution8()
+        print(sys._getframe(0).f_lineno, solObj.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))
 
         
         
@@ -410,7 +611,54 @@ if topic == 'Strings':
 '''
 topic = '2D Arrays'
 if topic == '2D Arrays':
-    pass
+
+    # Que 1 Zigzag (or diagonal) traversal of Matrix
+    que1 = False
+    if que1:
+        class Solution1():
+            def printDiagonal(self, M):
+                row = 0
+                print("lneght of M", len(M))
+                for row in range(len(M)):
+                    curr_row = row
+                    curr_col = 0
+                    col_len = len(M[0])
+                    while curr_row >= 0 and curr_col < col_len:
+                        print(M[curr_row][curr_col], end=" ")
+                        curr_row -= 1
+                        curr_col += 1
+                    print()
+                row_fixed = len(M) - 1
+                col_loop = 1
+                curr_row = row_fixed
+                curr_col = col_loop
+                while col_loop < len(M[0]):
+                    curr_row = row_fixed
+                    curr_col = col_loop
+                    while curr_col < len(M[0]) and curr_row >= 0:
+                        print(M[curr_row][curr_col], end=" ")
+                        curr_row -= 1
+                        curr_col += 1
+                    print()
+                    col_loop += 1
+                
+
+        M = [[1,2,3,4],
+             [5,6,7,8],
+             [9,10,11,12],
+             [13,14,15,16],
+             [17,18,19,20]]
+
+
+        solObj = Solution1()
+        solObj.printDiagonal(M)
+
+    # Que 2 Set Matrix Zeroes
+    que2 = True
+    if que2:
+        
+
+
 
 ''' ************************************* Topic 4 : Searching & Sorting ************************************* '''
 '''
